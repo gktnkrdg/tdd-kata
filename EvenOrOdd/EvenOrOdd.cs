@@ -6,8 +6,15 @@ namespace EvenOrOdd
     {
         public  string SumIsEvenOrOdd(int[] numbers)
         {
-            return "test";
-                
+            int sum = 0;
+            foreach (var number in numbers)
+            {
+                sum += number;
+            }
+            if (sum % 2 == 0)
+                return "even";
+            return "odd";
+
         }
         
     }
