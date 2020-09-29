@@ -16,9 +16,10 @@ namespace EvenOrOdd.Test
         [InlineData(new[] { 10000, 18, 22, 43, 1, 67 },"odd")]
         public void GetEventOrOdd_ReturnString_SumOfElementsEven(int[] numbers,string expectedResult)
         {
-            string result = "";
+            EvenOrOdd evenOrOdd = new EvenOrOdd();
 
-            result.Should().Be(expectedResult);
+
+            evenOrOdd.SumIsEvenOrOdd(numbers).ToLower().Should().Be(expectedResult.ToLower());
         }
     }
 }
