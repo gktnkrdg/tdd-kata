@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace EvenOrOdd
 {
@@ -6,15 +7,7 @@ namespace EvenOrOdd
     {
         public  string SumIsEvenOrOdd(int[] numbers)
         {
-            int sum = 0;
-            foreach (var number in numbers)
-            {
-                sum += number;
-            }
-            if (sum % 2 == 0)
-                return "even";
-            return "odd";
-
+            return numbers.Sum() % 2 == 0 ? "even" : "odd";
         }
         
     }
