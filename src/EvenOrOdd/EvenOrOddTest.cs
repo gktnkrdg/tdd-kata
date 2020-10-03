@@ -2,9 +2,9 @@ using FluentAssertions;
 using System;
 using Xunit;
 
-namespace EvenOrOdd.Test
+namespace TDDKatas.EvenOrOdd
 {
-    public class GetEventOrOdd
+    public class EvenOrOddTest
     {
         [Theory]
         [InlineData(new int[0],"even")]
@@ -14,7 +14,7 @@ namespace EvenOrOdd.Test
         [InlineData(new[] { 1 },"odd")]
         [InlineData(new[] { -1, 5, 6, 11 },"odd")]
         [InlineData(new[] { 10000, 18, 22, 43, 1, 67 },"odd")]
-        public void GetEventOrOdd_ReturnString_SumOfElementsEven(int[] numbers,string expectedResult)
+        public void GetEventOrOdd_ReturnString_SumOfElements(int[] numbers,string expectedResult)
         {
             EvenOrOdd evenOrOdd = new EvenOrOdd();
 
