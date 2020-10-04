@@ -14,7 +14,7 @@ namespace TDDKatas.EvenOrOdd
         [InlineData(new[] { 1 },"odd")]
         [InlineData(new[] { -1, 5, 6, 11 },"odd")]
         [InlineData(new[] { 10000, 18, 22, 43, 1, 67 },"odd")]
-        public void GetEventOrOdd_SumOfElements_ReturnString_(int[] numbers,string expectedResult)
+        public void GetEventOrOdd_SumOfElements_ReturnString(int[] numbers,string expectedResult)
         {
             EvenOrOdd evenOrOdd = new EvenOrOdd();
 
