@@ -17,9 +17,13 @@ namespace TDDKatas.PrimeFactor
         [InlineData(81, new[] { 3, 3, 3, 3 })]
         [InlineData(100, new[] { 2, 2,5, 5 })]
         [InlineData(240, new[] { 2, 2, 2, 2,3,5 })]
-        public void GetPrimeFactor(int number,int[] expectedArray)
+        public void Generate_WithNumber_ReturnExpecteString    (int number,int[] expectedArray)
         {
-            PrimeFactor.GeneratePrimeFactors(number).Should().BeEquivalentTo(expectedArray);
+            PrimeFactor primeFactor = new PrimeFactor();
+
+            var primeFactors = primeFactor.GeneratePrimeFactors(number);
+            
+            primeFactors.Should().BeEquivalentTo(expectedArray);
        }
     }
 }
