@@ -18,8 +18,9 @@ namespace TDDKatas.EvenOrOdd
         {
             EvenOrOdd evenOrOdd = new EvenOrOdd();
 
+            var evenOrOddResult = evenOrOdd.SumIsEvenOrOdd(numbers).ToLower();
 
-            evenOrOdd.SumIsEvenOrOdd(numbers).ToLower().Should().Be(expectedResult.ToLower());
+            evenOrOddResult.Should().Be(expectedResult.ToLower());
         }
     }
 }
