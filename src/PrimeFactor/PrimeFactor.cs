@@ -9,17 +9,16 @@ namespace TDDKatas.PrimeFactor
     {
         public static List<int> GeneratePrimeFactors(int number)
         {
-            int[] primeNumbers = { 2, 3, 5, 7, 11 };
             var primeFactors = new List<int>();
-            if (number < 2)
-                return new List<int>();
-            for(int i = 0; i < primeNumbers.Count(); i++)
-            {
-                while (number % primeNumbers[i] == 0)
+            var factor = 2;
+            while (number > 1)  
+            { 
+                while (number % factor == 0)
                 {
-                    number = number / primeNumbers[i];
-                    primeFactors.Add(primeNumbers[i]);
+                    number = number / factor;
+                    primeFactors.Add(factor);
                 }
+                factor++;
             }
             return primeFactors;
         }
