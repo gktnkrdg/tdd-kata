@@ -10,15 +10,13 @@ namespace TDDKatas.PrimeFactor
         public static List<int> GeneratePrimeFactors(int number)
         {
             var primeFactors = new List<int>();
-            var factor = 2;
-            while (number > 1)  
+            for (var factor=2;number > 1;factor++)  
             { 
                 while (number % factor == 0)
                 {
                     number = number / factor;
                     primeFactors.Add(factor);
                 }
-                factor++;
             }
             return primeFactors;
         }
