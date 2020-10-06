@@ -10,6 +10,8 @@ namespace TDDKatas.LeapYear
         {
             if (year == 2000)
                 return true;
+            if (year == 400)
+                return true;
             return false;
         }
     }

@@ -11,6 +11,7 @@ namespace TDDKatas.LeapYear
         [Theory]
         [InlineData(2000,true)]
         [InlineData(2001,false)]
+        [InlineData(400, true)]
         public void IsLeapYear_ShouldReturnYearIsALeapYear(int year,bool expectedResult)
         {
             LeapYear leapYear = new LeapYear();
