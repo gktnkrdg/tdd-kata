@@ -6,17 +6,18 @@ using Xunit;
 
 namespace TDDKatas.LeapYear
 {
-   public class LeapYearTest
+    public class LeapYearTest
     {
-       [Theory]
-       [InlineData(2000)]
-       public void IsLeapYear_ShouldReturnYearIsALeapYear(int year)
+        [Theory]
+        [InlineData(2000,true)]
+        [InlineData(2001,false)]
+        public void IsLeapYear_ShouldReturnYearIsALeapYear(int year,bool expectedResult)
         {
             LeapYear leapYear = new LeapYear();
 
             var isLeapYear = leapYear.IsLeapYear(year);
 
-            isLeapYear.Should().Be(true);
+            isLeapYear.Should().Be(expectedResult);
         }
     }
 }

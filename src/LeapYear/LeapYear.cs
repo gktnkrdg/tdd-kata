@@ -8,7 +8,9 @@ namespace TDDKatas.LeapYear
     {
         public bool IsLeapYear(int year)
         {
-            return true;
+            if (year == 2000)
+                return true;
+            return false;
         }
     }
 }
