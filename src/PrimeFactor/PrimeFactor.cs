@@ -7,7 +7,7 @@ namespace TDDKatas.PrimeFactor
 {
     public class PrimeFactor
     {
-        public  List<int> GeneratePrimeFactors(int number)
+        public  List<int> Generate(int number)
         {
             var primeFactors = new List<int>();
             for (var factor=2;number > 1;factor++)  
