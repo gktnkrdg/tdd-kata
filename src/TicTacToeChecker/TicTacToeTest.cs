@@ -18,7 +18,7 @@ namespace TDDKatas.TicTacToeChecker
                 {
                     new object[] { new int[,] { { 1, 2, 1 }, { -1, -1, 1 }, { 2, 1, 1 } } , 1 },
                     new object[] { new int[,] { { -1, 2, 1 }, { 1, 2, -1 }, { 1, 2, -1 } } , 2 },
-                     new object[] { new int[,] { { -1,1, -1 }, { -1, 1, 1 }, { -1, 1, 2 } } , 1 },
+                    new object[] { new int[,] { { -1,1, -1 }, { -1, 1, 1 }, { -1, 1, 2 } } , 1 },
                 };
             }
         }
@@ -31,11 +31,23 @@ namespace TDDKatas.TicTacToeChecker
                 {
                     new object[] { new int[,] { { 1, 1, 1 }, { 1, 2, 1 }, { 2, 1, 1 } } , 1 },
                     new object[] { new int[,] { { 1, 2, 1 }, { 2, 2, 2 }, { 2, 1, 1 } } , 2 },
-                    new object[] { new int[,] { { -1, -1, -1 }, { 1, 1, 1 }, { 2, 1, 1 } } , 1 },
+                    new object[] { new int[,] { {-1,-1,-1 }, { 1, 1, 1 }, { 2, 1, 1 } } , 1 },
                 };
             }
         }
-
+        public static IEnumerable<object[]> PlayerWinsDiagonalData
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { new int[,] { { 1, -1, -1 }, { -1, 1, 1 }, { -1, 2, 1 } } , 1 },
+                    new object[] { new int[,] { { 2, -1, -1 }, { -1, 2, -1 }, { 1, 1, 2 } } , 2 },
+                    new object[] { new int[,] { {-1,-1,1 }, { 2, 1, -1 }, { 1, -1, 2 } } ,1 },
+                };
+            }
+        }
+      
         [Theory]
         [MemberData(nameof(PlayerWinsRowData))]
 
@@ -47,6 +59,7 @@ namespace TDDKatas.TicTacToeChecker
 
             boardResult.Should().Be(expectedResult);
         }
+
         [Theory]
         [MemberData(nameof(PlayerWinsColumnData))]
         public void SolveBoard_PlayerWinsInColumn_ShouldReturnPlayerWinner(int[,] board, int expectedResult)
@@ -57,6 +70,17 @@ namespace TDDKatas.TicTacToeChecker
 
             boardResult.Should().Be(expectedResult);
         }
+        [Theory]
+        [MemberData(nameof(PlayerWinsDiagonalData))]
+        public void SolveBoard_PlayerWinsInDiagonal_ShouldReturnPlayerWinner(int[,] board, int expectedResult)
+        {
+            TicTacToe ticTacToe = new TicTacToe();
+
+            var boardResult = ticTacToe.CheckBoard(board);
+
+            boardResult.Should().Be(expectedResult);
+        }
+     
 
     }
 }

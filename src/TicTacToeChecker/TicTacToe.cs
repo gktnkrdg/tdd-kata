@@ -7,11 +7,12 @@ namespace TDDKatas.TicTacToeChecker
 {
     public class TicTacToe
     {
-      
+
         public int CheckBoard(int[,] board)
         {
             var result = -1;
-            for (int i= 0; i < board.GetLength(1)   ; i++){
+            for (int i = 0; i < board.GetLength(1); i++)
+            {
                 result = GetLineStatus(board.GetRow(i));
                 if (result > 0)
                     return result;
@@ -22,14 +23,20 @@ namespace TDDKatas.TicTacToeChecker
                 if (result > 0)
                     return result;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                result = GetLineStatus(board.GetDiagonals().GetRow(i));
+                if (result > 0)
+                    return result;
+            }
             return result;
         }
 
 
-        private int GetLineStatus(int [] array)
+        private int GetLineStatus(int[] array)
         {
             return array.Distinct().Count() == 1 ? array[0] : -1;
         }
-    
+
     }
 }
