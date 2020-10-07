@@ -12,17 +12,23 @@ namespace TDDKatas.TicTacToeChecker
         {
             var result = -1;
             for (int i= 0; i < board.GetLength(1)   ; i++){
-                result = CheckRow(board.GetRow(i));
+                result = GetLineStatus(board.GetRow(i));
                 if (result > 0)
-                    break;
+                    return result;
+            }
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                result = GetLineStatus(board.GetColumn(i));
+                if (result > 0)
+                    return result;
             }
             return result;
         }
 
 
-        private int CheckRow(int [] boardRow)
+        private int GetLineStatus(int [] array)
         {
-            return boardRow.Distinct().Count() == 1 ? boardRow[0] : -1;
+            return array.Distinct().Count() == 1 ? array[0] : -1;
         }
     
     }

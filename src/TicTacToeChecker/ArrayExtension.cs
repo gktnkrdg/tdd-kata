@@ -20,5 +20,6 @@ namespace TDDKatas.TicTacToeChecker
                         .Select(x => matrix[rowNumber, x])
                         .ToArray();
             }
+         
     }
 }
