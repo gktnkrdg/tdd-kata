@@ -35,7 +35,7 @@ namespace TDDKatas.TicTacToeChecker
 
         private int GetLineStatus(int[] array)
         {
-            return array.Distinct().Count() == 1 ? array[0] : -1;
+            return array.Distinct().Count() == 1 && array[0] !=0 ? array[0] : -1;
         }
 
     }
