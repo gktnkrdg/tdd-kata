@@ -29,7 +29,7 @@ namespace TDDKatas.TicTacToeChecker
                 if (result > 0)
                     return result;
             }
-            return result;
+            return (board.Cast<int>().Contains(0) ? -1:  0 );
         }
 
 

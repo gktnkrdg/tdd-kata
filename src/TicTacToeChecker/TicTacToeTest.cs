@@ -16,9 +16,15 @@ namespace TDDKatas.TicTacToeChecker
             {
                 return new[]
                 {
-                    new object[] { new int[,] { { 1, 2, 1 }, { 0, 0, 1 }, { 2, 1, 1 } } , 1 },
-                    new object[] { new int[,] { { 0, 2, 1 }, { 1, 2, 0 }, { 1, 2, 0 } } , 2 },
-                    new object[] { new int[,] { { 0,1, 0 }, { 0, 1, 1 }, { 0, 1, 2 } } , 1 },
+                    new object[] { new int[,] { { 1, 2, 1 },
+                                                { 0, 0, 1 },
+                                                { 2, 1, 1 } } , 1 },
+                    new object[] { new int[,] { { 0, 2, 1 },
+                                                { 1, 2, 0 },
+                                                { 1, 2, 0 } } , 2 },
+                    new object[] { new int[,] { { 0, 1, 0 },
+                                                { 0, 1, 1 },
+                                                { 0, 1, 2 } } , 1 },
                 };
             }
         }
@@ -29,9 +35,15 @@ namespace TDDKatas.TicTacToeChecker
             {
                 return new[]
                 {
-                    new object[] { new int[,] { { 1, 1, 1 }, { 1, 2, 1 }, { 2, 1, 1 } } , 1 },
-                    new object[] { new int[,] { { 1, 2, 1 }, { 2, 2, 2 }, { 2, 1, 1 } } , 2 },
-                    new object[] { new int[,] { {0,0,0 }, { 1, 1, 1 }, { 2, 1, 1 } } , 1 },
+                    new object[] { new int[,] { { 1, 1, 1 }, 
+                                                { 1, 2, 1 },
+                                                { 2, 1, 2 } } , 1 },
+                    new object[] { new int[,] { { 1, 2, 1 },
+                                                { 2, 2, 2 },
+                                                { 2, 1, 1 } } , 2 },
+                    new object[] { new int[,] { { 0 ,0 ,0 },
+                                                { 1, 1, 1 },
+                                                { 2, 1, 1 } } , 1 },
                 };
             }
         }
@@ -41,21 +53,45 @@ namespace TDDKatas.TicTacToeChecker
             {
                 return new[]
                 {
-                    new object[] { new int[,] { { 1, 0, 0 }, { 0, 1, 1 }, { 0, 2, 1 } } , 1 },
-                    new object[] { new int[,] { { 2, 0, 0 }, { 0, 2, 0 }, { 1, 1, 2 } } , 2 },
-                    new object[] { new int[,] { {0,0,1 }, { 2, 1, 0 }, { 1, 0, 2 } } ,1 },
+                    new object[] { new int[,] { { 1, 0, 0 },
+                                                { 0, 1, 1 },
+                                                { 0, 2, 1 } } , 1 },
+                    new object[] { new int[,] { { 2, 0, 0 }, 
+                                                { 0, 2, 0 }, 
+                                                { 1, 1, 2 } } , 2 },
+                    new object[] { new int[,] { { 0, 0, 1 },
+                                                { 2, 1, 0 },
+                                                { 1, 0, 2 } } ,1 },
                 };
             }
         }
-        public static IEnumerable<object[]> NoWinData
+        public static IEnumerable<object[]> NotFinishedData
         {
             get
             {
                 return new[]
                 {
-                    new object[] { new int[,] { { 1, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } } ,-1 },
-                    new object[] { new int[,] { { 0, 1, 0 }, { 2, 0, 0 }, { 0, 1, 0 } } , -1},
-                    new object[] { new int[,] { {0,0,1 }, { 0, 0, 2 }, { 0, 0, 1 } } ,-1 },
+                    new object[] { new int[,] { { 1, 0, 0 },
+                                                { 0, 0, 0 },
+                                                { 0, 0, 0 } } ,-1 },
+                    new object[] { new int[,] { { 0, 1, 0 },
+                                                { 2, 0, 0 },
+                                                { 0, 1, 0 } } , -1},
+                    new object[] { new int[,] { { 0, 0, 1 },
+                                                { 0, 0, 2 }, 
+                                                { 0, 0, 1 } } ,-1 },
+                };
+            }
+        }
+        public static IEnumerable<object[]> TieData
+        {
+            get
+            {
+                return new[]
+                {
+                    new object[] { new int[,] { { 1, 2, 2 },
+                                                { 2, 1, 1 },
+                                                { 1, 2, 2 } } ,0}
                 };
             }
         }
@@ -94,8 +130,19 @@ namespace TDDKatas.TicTacToeChecker
         }
 
         [Theory]
-        [MemberData(nameof(NoWinData))]
-        public void SolveBoard_NoWin_ShouldReturnNoWin(int[,] board, int expectedResult)
+        [MemberData(nameof(NotFinishedData))]
+        public void SolveBoard_NoWinner_ShouldReturnNoWin(int[,] board, int expectedResult)
+        {
+            TicTacToe ticTacToe = new TicTacToe();
+
+            var boardResult = ticTacToe.CheckBoard(board);
+
+            boardResult.Should().Be(expectedResult);
+        }
+
+        [Theory]
+        [MemberData(nameof(TieData))]
+        public void SolveBoard_GameIsTie_ShouldReturnTie(int[,] board, int expectedResult)
         {
             TicTacToe ticTacToe = new TicTacToe();
 
